@@ -1,6 +1,7 @@
 
 import React from 'react';
-import TerminalNav from '../components/TerminalNav';
+import CodeBackground from '../components/CodeBackground';
+import Navigation from '../components/Navigation';
 import HeroSection from '../components/HeroSection';
 import ProjectsSection from '../components/ProjectsSection';
 import SkillsSection from '../components/SkillsSection';
@@ -10,8 +11,9 @@ import Footer from '../components/Footer';
 
 const Index = () => {
   return (
-    <div className="bg-gray-900 text-white">
-      <TerminalNav />
+    <div className="relative min-h-screen">
+      <CodeBackground />
+      <Navigation />
       <HeroSection />
       <ProjectsSection />
       <SkillsSection />
