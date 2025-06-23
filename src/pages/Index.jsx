@@ -1,0 +1,25 @@
+
+import React from 'react';
+import TerminalNav from '../components/TerminalNav';
+import HeroSection from '../components/HeroSection';
+import ProjectsSection from '../components/ProjectsSection';
+import SkillsSection from '../components/SkillsSection';
+import AcademicSection from '../components/AcademicSection';
+import ContactSection from '../components/ContactSection';
+import Footer from '../components/Footer';
+
+const Index = () => {
+  return (
+    <div className="bg-gray-900 text-white">
+      <TerminalNav />
+      <HeroSection />
+      <ProjectsSection />
+      <SkillsSection />
+      <AcademicSection />
+      <ContactSection />
+      <Footer />
+    </div>
+  );
+};
+
+export default Index;
