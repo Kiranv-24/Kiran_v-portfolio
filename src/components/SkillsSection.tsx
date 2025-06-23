@@ -35,80 +35,83 @@ const SkillsSection: React.FC = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-white dark:bg-gray-800">
+    <section id="skills" className="py-20 bg-gradient-to-b from-gray-900/50 to-transparent">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Skills & Technologies
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            A comprehensive overview of my technical skills and the technologies I work with.
-          </p>
+        <div className="text-center mb-16">
+          <div className="scroll-reveal">
+            <h2 className="text-4xl md:text-5xl font-bold text-glow mb-4">
+              <span className="text-blue-400">{'<'}</span>
+              Skills & Technologies
+              <span className="text-blue-400">{' />'}</span>
+            </h2>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              My technical arsenal for building innovative solutions
+            </p>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {skillCategories.map((category, index) => (
-            <Card 
-              key={index} 
-              className="group hover:shadow-xl transition-all duration-300 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-0 animate-scale-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <CardHeader>
-                <CardTitle className="flex items-center gap-3 text-xl font-bold text-gray-900 dark:text-white">
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${category.color} flex items-center justify-center text-2xl`}>
-                    {category.icon}
+            <div key={index} className={`scroll-reveal stagger-${index + 1}`}>
+              <Card className="group h-full terminal-bg hover:border-blue-500 transition-all duration-500 hover:scale-105">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-3 text-xl font-bold text-white">
+                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${category.color} flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300`}>
+                      {category.icon}
+                    </div>
+                    {category.title}
+                  </CardTitle>
+                </CardHeader>
+                
+                <CardContent>
+                  <div className="flex flex-wrap gap-3">
+                    {category.skills.map((skill, skillIndex) => (
+                      <Badge 
+                        key={skillIndex}
+                        className={`px-3 py-1 text-sm bg-gray-800 border-blue-500 text-blue-400 hover:bg-blue-600 hover:text-white transition-all duration-300 hover:scale-110 cursor-default stagger-${skillIndex + 1}`}
+                      >
+                        {skill}
+                      </Badge>
+                    ))}
                   </div>
-                  {category.title}
-                </CardTitle>
-              </CardHeader>
-              
-              <CardContent>
-                <div className="flex flex-wrap gap-3">
-                  {category.skills.map((skill, skillIndex) => (
-                    <Badge 
-                      key={skillIndex}
-                      variant="secondary" 
-                      className="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 hover:bg-blue-100 dark:hover:bg-blue-900 transition-all duration-200 hover:scale-105 cursor-default"
-                    >
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </div>
           ))}
         </div>
 
-        {/* Skills Progress Bars (Visual Enhancement) */}
-        <div className="mt-16 animate-fade-in" style={{ animationDelay: '0.5s' }}>
-          <h3 className="text-2xl font-bold text-center text-gray-900 dark:text-white mb-8">
-            Proficiency Levels
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { skill: "Python", level: 90 },
-              { skill: "JavaScript", level: 85 },
-              { skill: "React.js", level: 80 },
-              { skill: "Machine Learning", level: 75 },
-              { skill: "C++", level: 85 },
-              { skill: "Node.js", level: 70 }
-            ].map((item, index) => (
-              <div key={index} className="space-y-2">
-                <div className="flex justify-between">
-                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{item.skill}</span>
-                  <span className="text-sm text-gray-500 dark:text-gray-400">{item.level}%</span>
+        {/* Skills Progress */}
+        <div className="mt-16 scroll-reveal stagger-5">
+          <div className="terminal-bg p-8 rounded-xl">
+            <h3 className="text-2xl font-bold text-center text-glow mb-8">
+              Proficiency Overview
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                { skill: "Python", level: 90 },
+                { skill: "JavaScript", level: 85 },
+                { skill: "React.js", level: 80 },
+                { skill: "Machine Learning", level: 75 },
+                { skill: "C++", level: 85 },
+                { skill: "Node.js", level: 70 }
+              ].map((item, index) => (
+                <div key={index} className="space-y-2">
+                  <div className="flex justify-between">
+                    <span className="text-sm font-medium text-blue-400">{item.skill}</span>
+                    <span className="text-sm text-gray-400">{item.level}%</span>
+                  </div>
+                  <div className="w-full bg-gray-700 rounded-full h-2">
+                    <div 
+                      className="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full transition-all duration-1000 ease-out"
+                      style={{ 
+                        width: `${item.level}%`,
+                        animationDelay: `${index * 0.2}s`
+                      }}
+                    ></div>
+                  </div>
                 </div>
-                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                  <div 
-                    className="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full transition-all duration-1000 ease-out"
-                    style={{ 
-                      width: `${item.level}%`,
-                      animationDelay: `${index * 0.1}s`
-                    }}
-                  ></div>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>

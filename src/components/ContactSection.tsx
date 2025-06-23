@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Mail, Phone, Github, Linkedin, Send } from 'lucide-react';
+import { Mail, Phone, Github, Linkedin, Send, Copy } from 'lucide-react';
 import { portfolioData } from '@/data/portfolioData';
 import { useToast } from '@/hooks/use-toast';
 
@@ -27,15 +27,20 @@ const ContactSection: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // For demo purposes, we'll just show a success message
-    // In a real implementation, you'd integrate with a service like Formspree
     toast({
       title: "Message Sent!",
       description: "Thank you for your message. I'll get back to you soon.",
     });
     
-    // Reset form
     setFormData({ name: '', email: '', message: '' });
+  };
+
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text);
+    toast({
+      title: "Copied!",
+      description: "Email address copied to clipboard.",
+    });
   };
 
   const contactMethods = [
@@ -70,66 +75,89 @@ const ContactSection: React.FC = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-white dark:bg-gray-800">
+    <section id="contact" className="py-20 bg-gradient-to-b from-gray-900/50 to-black">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Get In Touch
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology.
-          </p>
+        <div className="text-center mb-16">
+          <div className="scroll-reveal">
+            <h2 className="text-4xl md:text-5xl font-bold text-glow mb-4">
+              <span className="text-blue-400">{'<'}</span>
+              Get In Touch
+              <span className="text-blue-400">{' />'}</span>
+            </h2>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              Ready to collaborate on your next project? Let's build something amazing together.
+            </p>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Methods */}
-          <div className="space-y-8 animate-slide-in-left">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-              Let's Connect
-            </h3>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {contactMethods.map((method, index) => (
-                <Card 
-                  key={index} 
-                  className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-0 cursor-pointer"
-                  onClick={() => window.open(method.href, '_blank')}
-                >
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-4">
-                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${method.color} flex items-center justify-center text-white group-hover:scale-110 transition-transform`}>
-                        <method.icon className="h-6 w-6" />
+          <div className="space-y-8">
+            <div className="scroll-reveal stagger-1">
+              <h3 className="text-2xl font-bold text-glow mb-6">
+                Let's Connect
+              </h3>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {contactMethods.map((method, index) => (
+                  <Card 
+                    key={index} 
+                    className="group terminal-bg hover:border-blue-500 transition-all duration-300 hover:scale-105 cursor-pointer"
+                    onClick={() => window.open(method.href, '_blank')}
+                  >
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-4">
+                        <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${method.color} flex items-center justify-center text-white group-hover:scale-110 transition-transform`}>
+                          <method.icon className="h-6 w-6" />
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-white group-hover:text-blue-400 transition-colors">
+                            {method.label}
+                          </h4>
+                          <p className="text-sm text-gray-400">
+                            {method.value}
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <h4 className="font-semibold text-gray-900 dark:text-white group-hover:text-blue-500 transition-colors">
-                          {method.label}
-                        </h4>
-                        <p className="text-sm text-gray-600 dark:text-gray-300">
-                          {method.value}
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
 
-            <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl">
-              <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                Open to Opportunities
-              </h4>
-              <p className="text-gray-600 dark:text-gray-300">
-                Currently seeking full-time positions in software development, 
-                with particular interest in AI/ML and web development roles.
-              </p>
+            <div className="scroll-reveal stagger-2">
+              <div className="glassmorphic p-6 rounded-xl">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h4 className="text-lg font-semibold text-blue-400 mb-2">
+                      Quick Contact
+                    </h4>
+                    <p className="text-gray-300 font-mono">{personal.email}</p>
+                  </div>
+                  <Button
+                    onClick={() => copyToClipboard(personal.email)}
+                    size="sm"
+                    variant="outline"
+                    className="border-blue-500 text-blue-400 hover:bg-blue-600 hover:text-white"
+                  >
+                    <Copy className="h-4 w-4" />
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
 
           {/* Contact Form */}
-          <div className="animate-slide-in-right">
-            <Card className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-0 shadow-xl">
+          <div className="scroll-reveal stagger-3">
+            <Card className="terminal-bg hover:border-blue-500 transition-all duration-500 card-glow">
               <CardHeader>
-                <CardTitle className="text-2xl font-bold text-gray-900 dark:text-white">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                  <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <span className="text-gray-400 text-sm ml-2">contact-form.jsx</span>
+                </div>
+                <CardTitle className="text-2xl font-bold text-white">
                   Send a Message
                 </CardTitle>
               </CardHeader>
@@ -143,7 +171,7 @@ const ContactSection: React.FC = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="bg-white/50 dark:bg-gray-800/50 border-gray-200 dark:border-gray-700 focus:border-blue-500"
+                      className="bg-gray-800 border-gray-600 focus:border-blue-500 text-white"
                     />
                   </div>
                   
@@ -155,7 +183,7 @@ const ContactSection: React.FC = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="bg-white/50 dark:bg-gray-800/50 border-gray-200 dark:border-gray-700 focus:border-blue-500"
+                      className="bg-gray-800 border-gray-600 focus:border-blue-500 text-white"
                     />
                   </div>
                   
@@ -167,14 +195,14 @@ const ContactSection: React.FC = () => {
                       onChange={handleInputChange}
                       rows={5}
                       required
-                      className="bg-white/50 dark:bg-gray-800/50 border-gray-200 dark:border-gray-700 focus:border-blue-500 resize-none"
+                      className="bg-gray-800 border-gray-600 focus:border-blue-500 text-white resize-none"
                     />
                   </div>
                   
                   <Button 
                     type="submit" 
                     size="lg" 
-                    className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white"
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white border-glow hover:scale-105 transition-all duration-300"
                   >
                     <Send className="mr-2 h-5 w-5" />
                     Send Message
