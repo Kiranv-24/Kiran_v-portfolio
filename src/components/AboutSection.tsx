@@ -48,29 +48,50 @@ const AboutSection: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="space-y-4">
-                  <h4 className="text-lg font-semibold text-white">
-                    Key Achievements
-                  </h4>
-                  <ul className="space-y-2 text-gray-300">
-                    <li className="flex items-center gap-2">
-                      <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                      Maintaining high academic performance with 8.6+ CGPA
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                      Active participant in coding competitions and hackathons
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                      Strong foundation in Data Structures and Algorithms
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                      Hands-on experience with machine learning projects
-                    </li>
-                  </ul>
-                </div>
+               <div className="space-y-4">
+  <h4 className="text-lg font-semibold text-white">
+    Key Achievements
+  </h4>
+  <ul className="space-y-2 text-gray-300">
+    <li className="flex items-center gap-2">
+      <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+      Secured 1st place in the coding event C-NARIO organized by IEEE SIT Student Branch among 100+ teams
+    </li>
+    <li className="flex items-center gap-2">
+      <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+      Member of Frequency Club (Technical Club)
+    </li>
+    <li className="flex items-center gap-2">
+      <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+      Member of Accelerate Club (Technical Club)
+    </li>
+    <li className="flex items-center gap-2">
+      <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+      Published a research paper on stock prediction using Machine Learning
+    </li>
+    <li className="flex items-center gap-2">
+      <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+      Participated in EY Tech Hackathon
+    </li>
+    <li className="flex items-center gap-2">
+      <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+      Maintaining high academic performance with 9+ CGPA
+    </li>
+    <li className="flex items-center gap-2">
+      <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+      Active participant in coding competitions and hackathons
+    </li>
+    <li className="flex items-center gap-2">
+      <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+      Strong foundation in Data Structures and Algorithms
+    </li>
+    <li className="flex items-center gap-2">
+      <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+      Hands-on experience with machine learning projects
+    </li>
+  </ul>
+</div>
+
               </CardContent>
             </Card>
           </div>
@@ -91,10 +112,13 @@ const AboutSection: React.FC = () => {
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[
-                    { title: "AI & Machine Learning", icon: "🤖" },
+                  
                     { title: "Web Development", icon: "🌐" },
+                    { title: "Data Structures and ALgorithms", icon: "🧩" },
+                    { title: "Competative Programming", icon: "⌨️" },
                     { title: "Software Engineering", icon: "⚙️" },
-                    { title: "Data Science", icon: "📊" }
+                    { "title": "AI & Machine Learning", "icon": "🧠" }
+
                   ].map((area, index) => (
                     <div 
                       key={index} 

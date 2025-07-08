@@ -83,10 +83,10 @@ const SkillsSection: React.FC = () => {
         {/* Skills Progress */}
         <div className="mt-16 scroll-reveal stagger-5">
           <div className="terminal-bg p-8 rounded-xl">
-            <h3 className="text-2xl font-bold text-center text-glow mb-8">
+            {/* <h3 className="text-2xl font-bold text-center text-glow mb-8">
               Proficiency Overview
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            </h3> */}
+            {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
                 { skill: "Python", level: 90 },
                 { skill: "JavaScript", level: 85 },
@@ -111,7 +111,7 @@ const SkillsSection: React.FC = () => {
                   </div>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

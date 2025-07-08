@@ -11,12 +11,12 @@ const HeroSection: React.FC = () => {
   const [terminalText, setTerminalText] = useState('');
   const [currentTerminalLine, setCurrentTerminalLine] = useState(0);
 
-  const fullText = "Aspiring Software Developer | AI & Web Explorer";
+  const fullText = "Passionate about Web Development | Exploring the MERN Stack | Diving into DSA!";
   
   const terminalLines = [
     'name: "Kiran V",',
     'role: "Full Stack Developer",',
-    'passion: "AI & Innovation"'
+    'passion: "Data Structure and Algorithms"'
   ];
 
   useEffect(() => {
@@ -142,8 +142,8 @@ const HeroSection: React.FC = () => {
                 <div className="glassmorphic p-6 rounded-xl">
                   <h2 className="text-xl font-bold text-glow mb-4">About Me</h2>
                   <p className="text-gray-300 leading-relaxed">
-                    I am a highly motivated developer with a strong grasp of AI, deep learning, 
-                    and full-stack web development. I enjoy writing elegant code and solving 
+                    I am a highly motivated developer with a strong grasp of Data structure and Algorithms, 
+                     full-stack web development anD Computer Core fundamentals like oops,OS,CNand DBMS. I enjoy writing elegant code and solving 
                     real-world problems with scalable tech solutions.
                   </p>
                 </div>
