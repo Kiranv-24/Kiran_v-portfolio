@@ -64,13 +64,14 @@ const HeroSection: React.FC = () => {
   }, [currentTerminalLine]);
 
   const handleDownloadResume = () => {
-    const link = document.createElement('a');
-    link.href = personal.resumeUrl;
-    link.download = 'Kiran_V_Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+  const link = document.createElement('a');
+  link.href = '/KIRAN.V-CSE-2026.pdf'; // no C:\ path!
+  link.download = 'KIRAN.V-CSE-2026.pdf';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
 
   const scrollToContact = () => {
     const element = document.getElementById('contact');
@@ -215,7 +216,7 @@ const HeroSection: React.FC = () => {
                     
                     {/* Profile image */}
                     <img
-                      src="/lovable-uploads/fc80c050-b409-4e2c-aada-96216bebbc21.png"
+                      src="/lovable-uploads/fc80c050-b409-4e2c-aada-96216bebbc21.jpg"
                       alt="Kiran V - Profile"
                       className="w-full h-full object-cover relative z-10 group-hover:scale-110 transition-transform duration-700"
                     />
